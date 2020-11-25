@@ -1,16 +1,16 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 public class FileManager {
+    public static String isLogged = "not Logged";
 
     public boolean login() {
+        isLogged = "Logged";
         return true;
 
     }
 
     public boolean logout() {
+        isLogged = "not Logged";
         return false;
     }
 
@@ -41,27 +41,13 @@ public class FileManager {
 
     public String createFile() throws IOException {
 
-        String path = File.getName2();
-        String line = "";
-        try {
-            BufferedReader buffRead = new BufferedReader(new FileReader(path));
+        String path = File.getName();
+        BufferedWriter buffWrite = new BufferedWriter(new FileWriter(path));
 
-            while (true) {
-                if (line != null) {
-                    System.out.println(line);
+        String line = isLogged;
 
-                } else
-                    break;
-                line = buffRead.readLine();
-            }
-            buffRead.close();
-
-        } catch (FileNotFoundException e) {
-            throw e;
-
-        } catch (IOException e) {
-            throw e;
-        }
+        buffWrite.append(line + "\n");
+        buffWrite.close();
 
         return line;
     }
