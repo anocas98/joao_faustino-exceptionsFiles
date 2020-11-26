@@ -5,22 +5,26 @@ public class Main {
 
     public static void main(String[] args) {
 
-        FileManager fileManager = new FileManager();
+        File file = new File("test.txt");
+        File file2 = new File("test5.txt");
+
+        FileManager fileManager = new FileManager(file);
         try {
 
-            System.out.println("1- Login \n 2- Logout");
-            Scanner sc = new Scanner(System.in);
 
-            if (sc.nextInt() == 1)
                 fileManager.login();
-            else {
-                fileManager.logout();
-            }
+
+
 
             System.out.println(fileManager.createFile());
-            System.out.println(fileManager.getFile());
 
-        } catch (IOException e) {
+            fileManager.file = file2;
+            fileManager.logout();
+         //   fileManager.createFile();
+            System.out.println(fileManager.getFile(8));
+
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

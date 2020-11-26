@@ -1,8 +1,12 @@
 public class File {
 
-    private static String name = "/Users/ana.magalhaesschool.mindera.com/Desktop/hello_world/Exceptions/test.txt";
+    private String name;
 
-    public static String getName() {
+    public File(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
         return name;
 
     }
